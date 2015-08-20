@@ -1,0 +1,29 @@
+{
+	"name": "node-pifacedigital",
+	"description": "Raspberry Pi Piface Addon",
+	"version": "0.0.1",
+	"keywords": [
+		"piface",
+    "pifacedigital",
+		"raspberry pi"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tualo/node-pifacedigital.git"
+	},
+	"author": {
+		"name": "Thomas Hoffmann",
+		"email": "thomas.hoffmann@tualo.de"
+	},
+	"main": "./build/Release/pfio",
+	"engines": {
+		"node": ">= 0.10.17"
+	},
+	"dependencies": {
+		"nan": "^1.7.0",
+		"node-gyp": "0.10.10"
+	},
+	"scripts": {
+		"install": "node-gyp rebuild"
+	}
+}
