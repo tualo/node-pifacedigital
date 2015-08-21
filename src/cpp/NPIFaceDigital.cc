@@ -55,8 +55,8 @@ PIFaceDigital::PIFaceDigital(int addr): ObjectWrap() {
 
 PIFaceDigital::~PIFaceDigital(){
   if (hw_addr!=-1){
-    pifacedigital_close(hw_addr);
 		pifacedigital_write_reg(0x00, OUTPUT, hw_addr);
+    pifacedigital_close(hw_addr);
     hw_addr = -1;
   }
 }
@@ -64,9 +64,10 @@ PIFaceDigital::~PIFaceDigital(){
 
 NAN_METHOD(PIFaceDigital::Open){
   SETUP_FUNCTION(PIFaceDigital)
-
+	if(args.Length() == 1) {
+  	self->hw_addr = args[0]->IntegerValue();
+	}
   pifacedigital_open(self->hw_addr);
-
 }
 
 NAN_METHOD(PIFaceDigital::Close){
