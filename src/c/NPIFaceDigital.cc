@@ -1,4 +1,5 @@
-#include "PIFaceDigital.h"
+#include "NPIFaceDigital.h"
+#include <pifacedigital.h>
 
 v8::Persistent<FunctionTemplate> PIFaceDigital::constructor;
 
@@ -42,14 +43,25 @@ PIFaceDigital::PIFaceDigital(int addr): ObjectWrap() {
   hw_addr = addr;
 }
 
+PIFaceDigital::~PIFaceDigital(int addr): ObjectWrap() {
+  if (hw_addr!=-1){
+    pifacedigital_close(hw_addr);
+    hw_addr = -1;
+  }
+}
+
+
 NAN_METHOD(PIFaceDigital::Open){
   SETUP_FUNCTION(PIFaceDigital)
-  self->pifacedigital_open(hw_addr);
+
+  pifacedigital_open(self->hw_addr);
+
 }
 
 NAN_METHOD(PIFaceDigital::Close){
   SETUP_FUNCTION(PIFaceDigital)
-  self->pifacedigital_close(hw_addr);
+  pifacedigital_close(self->hw_addr);
+  self->hw_addr = -1;
 }
 
 NAN_METHOD(PIFaceDigital::Set){
@@ -58,7 +70,7 @@ NAN_METHOD(PIFaceDigital::Set){
   if(args.Length() == 2) {
   	int i = args[0]->IntegerValue();
   	int j = args[1]->IntegerValue();
-    pifacedigital_digital_write(i,j);
+    pifacedigital_write_bit(i, j, OUTPUT, self->hw_addr);
   } else {
     NanThrowTypeError( "Invalid number of arguments" );
   }
@@ -68,10 +80,11 @@ NAN_METHOD(PIFaceDigital::Set){
 
 NAN_METHOD(PIFaceDigital::Get){
 	SETUP_FUNCTION(PIFaceDigital)
-  int res = 0;
+  uint8_t res = 0;
   if(args.Length() == 1) {
   	int i = args[0]->IntegerValue();
-    res = pifacedigital_digital_read(i);
+    //res = pifacedigital_digital_read(i);
+    res = pifacedigital_read_bit(i, OUTPUT, self->hw_addr);
   } else {
     NanThrowTypeError( "Invalid number of arguments" );
   }

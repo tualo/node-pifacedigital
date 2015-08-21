@@ -13,9 +13,10 @@
 	},
 	"author": {
 		"name": "Thomas Hoffmann",
-		"email": "thomas.hoffmann@tualo.de"
+		"email": "thomas.hoffmann@tualo.de",
+    "url": "http://tualo.de/"
 	},
-	"main": "./build/Release/pfio",
+	"main": "lib/main.js",
 	"engines": {
 		"node": ">= 0.10.17"
 	},
@@ -23,7 +24,16 @@
 		"nan": "^1.7.0",
 		"node-gyp": "0.10.10"
 	},
+  "readmeFilename": "README.md",
 	"scripts": {
 		"install": "node-gyp rebuild"
-	}
+	},
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-coffee": "*",
+    "grunt-cli": "*",
+    "grunt-shell": "*",
+    "grunt-coffeelint": "*",
+    "coffee-script": "~1.9.0"
+  }
 }

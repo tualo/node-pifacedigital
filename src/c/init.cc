@@ -1,6 +1,6 @@
-#include "PIFaceDigital.h"
+#include "NPIFaceDigital.h"
 
-//extern "C" 
+//extern "C"
 void init(Handle<Object> target) {
     NanScope();
     PIFaceDigital::Init(target);

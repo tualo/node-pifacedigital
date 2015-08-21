@@ -58,9 +58,9 @@ class PIFaceDigital: public node::ObjectWrap {
     JSFUNC(Set)
     JSFUNC(Open)
     JSFUNC(Close)
-    
+
   private:
-    int hw_addr;
+    int hw_addr = -1;
 };
 
 #endif
