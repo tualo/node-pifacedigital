@@ -46,6 +46,8 @@ using namespace node;
 
 class PIFaceDigital: public node::ObjectWrap {
   public:
+    int hw_addr;
+
     static Persistent<FunctionTemplate> constructor;
 
     static void Init(Handle<Object> target);
@@ -53,6 +55,7 @@ class PIFaceDigital: public node::ObjectWrap {
 
     PIFaceDigital();
     PIFaceDigital(int addr);
+    ~PIFaceDigital();
 
     JSFUNC(Get)
     JSFUNC(Set)
@@ -60,7 +63,7 @@ class PIFaceDigital: public node::ObjectWrap {
     JSFUNC(Close)
 
   private:
-    int hw_addr = -1;
+
 };
 
 #endif

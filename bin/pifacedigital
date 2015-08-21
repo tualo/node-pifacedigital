@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+Cli = require('tualo-commander').Cli;
+cli = new Cli();
+cli.main();

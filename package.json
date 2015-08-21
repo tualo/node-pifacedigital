@@ -1,6 +1,9 @@
 {
 	"name": "node-pifacedigital",
 	"description": "Raspberry Pi Piface Addon",
+	"bin": {
+    "pifacedigital": "./bin/pifacedigital"
+  },
 	"version": "0.0.1",
 	"keywords": [
 		"piface",
@@ -22,7 +25,9 @@
 	},
 	"dependencies": {
 		"nan": "^1.7.0",
-		"node-gyp": "0.10.10"
+		"node-gyp": "0.10.10",
+    "tualo-commander": "*",
+    "colors": "*"
 	},
   "readmeFilename": "README.md",
 	"scripts": {

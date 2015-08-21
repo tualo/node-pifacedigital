@@ -43,7 +43,7 @@ PIFaceDigital::PIFaceDigital(int addr): ObjectWrap() {
   hw_addr = addr;
 }
 
-PIFaceDigital::~PIFaceDigital(int addr): ObjectWrap() {
+PIFaceDigital::~PIFaceDigital(){
   if (hw_addr!=-1){
     pifacedigital_close(hw_addr);
     hw_addr = -1;

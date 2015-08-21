@@ -34,7 +34,7 @@ module.exports = (grunt) ->
     (commands.push(require('./lib/commands/'+path.basename(name))) for name in commandList when name!='command.js')
 
     for command in commands
-      file = path.join(__dirname,'bin','sorter-'+command.commandName)
+      file = path.join(__dirname,'bin','pifacedigital-'+command.commandName)
       options =
         mode: 511
       data = """
