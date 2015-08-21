@@ -6,6 +6,13 @@ v8::Persistent<FunctionTemplate> PIFaceDigital::constructor;
 void PIFaceDigital::Init(Handle<Object> target) {
 	NanScope();
 
+  // Version string.
+  char out [21];
+  int n = sprintf(out, "%i.%i", 1, 0);
+  target->Set(NanNew<String>("version"), NanNew<String>(out, n));
+
+  //NODE_SET_METHOD(target, "readImage", ReadImage);
+
 	//Class
   Local<FunctionTemplate> ctor = NanNew<FunctionTemplate>(PIFaceDigital::New);
   NanAssignPersistent(constructor, ctor);
@@ -17,6 +24,9 @@ void PIFaceDigital::Init(Handle<Object> target) {
   NODE_SET_PROTOTYPE_METHOD(ctor, "set", Set);
 	NODE_SET_PROTOTYPE_METHOD(ctor, "open", Open);
 	NODE_SET_PROTOTYPE_METHOD(ctor, "close", Close);
+
+	target->Set(NanNew("PIFaceDigital"), ctor->GetFunction());
+
 }
 
 NAN_METHOD(PIFaceDigital::New) {
