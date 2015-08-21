@@ -56,6 +56,7 @@ PIFaceDigital::PIFaceDigital(int addr): ObjectWrap() {
 PIFaceDigital::~PIFaceDigital(){
   if (hw_addr!=-1){
     pifacedigital_close(hw_addr);
+		pifacedigital_write_reg(0x00, OUTPUT, hw_addr);
     hw_addr = -1;
   }
 }
