@@ -54,17 +54,18 @@ class PIFaceDigital extends EventEmitter
 
     for p in [0..7]
       @states[p]=@get p
-      
+
   _clean: () ->
     if @closeOnExit==true
-      pi.set 0,0
-      pi.set 0,1
-      pi.set 0,2
-      pi.set 0,3
-      pi.set 0,4
-      pi.set 0,5
-      pi.set 0,6
-      pi.set 0,7
+      @pi.set 0,0
+      @pi.set 0,1
+      @pi.set 0,2
+      @pi.set 0,3
+      @pi.set 0,4
+      @pi.set 0,5
+      @pi.set 0,6
+      @pi.set 0,7
+      
   set: (pin,value) ->
     @pi.set value,pin
 
