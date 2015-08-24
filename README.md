@@ -72,7 +72,8 @@ var pi = PIFD.PIFaceDigital(0,true);
 You can set the value of on of the output pins with:
 
 ```
-pi.set(pin);
+var value = 1;
+pi.set(pin,value);
 ```
 
 You can read the input pin value with:
