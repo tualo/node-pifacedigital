@@ -46,21 +46,25 @@ class PIFaceDigital extends EventEmitter
     @pi = new pifacedigital.PIFaceDigital
     pi = @pi
     pi.open()
-
-    process.on 'exit', () ->
-      if closeOnExit==true
-        pi.set 0,0
-        pi.set 0,1
-        pi.set 0,2
-        pi.set 0,3
-        pi.set 0,4
-        pi.set 0,5
-        pi.set 0,6
-        pi.set 0,7
+    @closeOnExit= closeOnExit
+    process.on 'exit', @_clean.bind(@)
+    process.on 'SIGTERM', @_clean.bind(@)
+    process.on 'SIGINT', @_clean.bind(@)
+    process.on 'SIGHUP', @_clean.bind(@)
 
     for p in [0..7]
       @states[p]=@get p
-
+      
+  _clean: () ->
+    if @closeOnExit==true
+      pi.set 0,0
+      pi.set 0,1
+      pi.set 0,2
+      pi.set 0,3
+      pi.set 0,4
+      pi.set 0,5
+      pi.set 0,6
+      pi.set 0,7
   set: (pin,value) ->
     @pi.set value,pin
 
