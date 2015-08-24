@@ -78,7 +78,7 @@ pi.set(pin,value);
 
 You can read the input pin value with:
 ```
-pi.get(pin);
+var val = pi.get(pin);
 ```
 or all input values at once:
 ```
@@ -86,10 +86,10 @@ var val = pi.getInput();
 ```
 
 You can watch changes on a single Input-Pin with:
-Type will be 'lohi' or 'hilo'.
+
 ```
 var callback = function(pin,type){
-
+  // Type will be 'lohi' or 'hilo'.
 }
 pi.watch(pin,callback);
 ```
