@@ -58,25 +58,37 @@ class PIFaceDigital extends EventEmitter
         pi.set 0,6
         pi.set 0,7
 
+    for p in [0..7]
+      @states[p]=@get p
+
   set: (pin,value) ->
     @pi.set value,pin
 
   get: (pin) ->
     @pi.get pin
 
+  getInput: () ->
+    @pi.getInput()
+
   watch: (pin, callback) ->
     if typeof @callbacks[pin]=='function'
       @callbacks[pin] = callback
-      
+      @_watch pin
+
   unwatch: (pin) ->
     if typeof @timer[pin]!='undefined'
       clearTimeout @timer[pin]
 
   _watch: (pin) ->
+
     val = @get pin
     if @states[pin]!=val
       if @states[pin]<val
         @callbacks[pin] pin,'lohi'
       else
         @callbacks[pin] pin,'hilo'
-    @timer[pin] = setTimeout @_watch.bind(@), 10
+    @states[pin]=val
+    me = @
+    fn = () ->
+      me._watch.bind(me)(pin)
+    @timer[pin] = setTimeout fn, 10

@@ -34,3 +34,61 @@ sudo make install
 ```
 npm install node-pifacedigital -g
 ```
+
+
+## Using
+
+You can use node-pifacedigital as commandline tool or library.
+
+### Commandline
+
+Setting output value:
+```
+pifacedigital --type set --pin 1 --value 1
+```
+
+Getting input value:
+```
+pifacedigital --type get --pin 1
+```
+
+Watch input values:
+```
+pifacedigital --type watch --pin 1
+```
+### Library
+
+#### Constructor
+
+The constructor of `PIFaceDigital` takes two arguments. HW_ADDR the address of
+your board (setted via jumper) and the optional `closeOnExit` if true all output
+pins will reset to 0 if the node process receives the `exit` signal.
+
+```
+var PIFD = require('node-pifacedigital');
+var pi = PIFD.PIFaceDigital(0,true);
+```
+
+You can set the value of on of the output pins with:
+
+```
+pi.set(pin);
+```
+
+You can read the input pin value with:
+```
+pi.get(pin);
+```
+or all input values at once:
+```
+var val = pi.getInput();
+```
+
+You can watch changes on a single Input-Pin with:
+Type will be 'lohi' or 'hilo'.
+```
+var callback = function(pin,type){
+
+}
+pi.watch(pin,callback);
+```

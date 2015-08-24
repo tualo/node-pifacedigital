@@ -24,6 +24,7 @@ void PIFaceDigital::Init(Handle<Object> target) {
   NODE_SET_PROTOTYPE_METHOD(ctor, "set", Set);
 	NODE_SET_PROTOTYPE_METHOD(ctor, "open", Open);
 	NODE_SET_PROTOTYPE_METHOD(ctor, "close", Close);
+	NODE_SET_PROTOTYPE_METHOD(ctor, "getInput", GetInput);
 
 	target->Set(NanNew("PIFaceDigital"), ctor->GetFunction());
 
@@ -95,11 +96,17 @@ NAN_METHOD(PIFaceDigital::Get){
   uint8_t res = 0;
   if(args.Length() == 1) {
   	int i = args[0]->IntegerValue();
-    //res = pifacedigital_digital_read(i);
-    res = pifacedigital_read_bit(i, OUTPUT, self->hw_addr);
+    res = pifacedigital_read_bit(i, INPUT, self->hw_addr);
   } else {
     NanThrowTypeError( "Invalid number of arguments" );
   }
 
 	NanReturnValue(res);
+}
+
+
+NAN_METHOD(PIFaceDigital::GetInput){
+	SETUP_FUNCTION(PIFaceDigital)
+	uint8_t inputs = pifacedigital_read_reg(INPUT, self->hw_addr);
+	NanReturnValue(inputs);
 }
