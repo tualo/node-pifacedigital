@@ -1,6 +1,6 @@
 {
 	"name": "node-pifacedigital",
-	"description": "Raspberry Pi Piface Addon",
+	"description": "Raspberry Pifacedigital Addon",
 	"bin": {
     "pifacedigital": "./bin/pifacedigital"
   },
