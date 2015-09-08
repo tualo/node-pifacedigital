@@ -66,7 +66,7 @@ pins will reset to 0 if the node process receives the `exit` signal.
 
 ```
 var PIFD = require('node-pifacedigital');
-var pi = PIFD.PIFaceDigital(0,true);
+var pi = new PIFD.PIFaceDigital(0,true);
 ```
 
 You can set the value of on of the output pins with:
