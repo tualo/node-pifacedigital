@@ -9,6 +9,8 @@
 #include <string.h>
 #include <nan.h>
 #include <pifacedigital.h>
+#include "AsyncWorker.h"
+
 
 #define REQ_FUN_ARG(I, VAR)                                             \
   if (args.Length() <= (I) || !args[I]->IsFunction())                   \
@@ -62,6 +64,7 @@ class PIFaceDigital: public node::ObjectWrap {
     JSFUNC(Open)
     JSFUNC(Close)
     JSFUNC(GetInput)
+    JSFUNC(Watch)
 
 
   private:

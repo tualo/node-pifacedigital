@@ -25,6 +25,7 @@ void PIFaceDigital::Init(Handle<Object> target) {
 	NODE_SET_PROTOTYPE_METHOD(ctor, "open", Open);
 	NODE_SET_PROTOTYPE_METHOD(ctor, "close", Close);
 	NODE_SET_PROTOTYPE_METHOD(ctor, "getInput", GetInput);
+	NODE_SET_PROTOTYPE_METHOD(ctor, "watch", Watch);
 
 	target->Set(NanNew("PIFaceDigital"), ctor->GetFunction());
 
@@ -109,4 +110,12 @@ NAN_METHOD(PIFaceDigital::GetInput){
 	SETUP_FUNCTION(PIFaceDigital)
 	uint8_t inputs = pifacedigital_read_reg(INPUT, self->hw_addr);
 	NanReturnValue(inputs);
+}
+
+NAN_METHOD(PIFaceDigital::Watch){
+	SETUP_FUNCTION(PIFaceDigital)
+	//int points = args[0]->Uint32Value();
+  NanCallback callback = new NanCallback(args[0].As<Function>());
+  NanAsyncQueueWorker(new AsyncWorker(callback, self->hw_addr));
+  NanReturnUndefined();
 }
