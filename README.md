@@ -90,6 +90,6 @@ You can watch changes on a single Input-Pin with:
 ```
 var callback = function(pin,type){
   // Type will be 'lohi' or 'hilo'.
-}
+};
 pi.watch(pin,callback);
 ```
