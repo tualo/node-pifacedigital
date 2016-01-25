@@ -1,5 +1,4 @@
 #include "NPIFaceDigital.h"
-#include <pifacedigital.h>
 
 v8::Persistent<FunctionTemplate> PIFaceDigital::constructor;
 
