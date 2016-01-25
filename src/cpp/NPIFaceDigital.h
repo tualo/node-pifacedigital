@@ -32,7 +32,7 @@ class PIFaceDigital : public Nan::ObjectWrap {
     static void GetInput(const Nan::FunctionCallbackInfo<v8::Value>& info);
     static void GetOutput(const Nan::FunctionCallbackInfo<v8::Value>& info);
     int hw_addr;
-}
+};
 
 /*
 class PIFaceDigital: public node::ObjectWrap {
