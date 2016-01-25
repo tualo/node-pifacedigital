@@ -1,8 +1,10 @@
+#include <node.h>
 #include "NPIFaceDigital.h"
 
-extern "C" void
-init(Handle<Object> target) {
-  PIFaceDigital::Init(target);
-};
+using namespace v8;
 
-NODE_MODULE(pifacedigital, init)
+void Init(Handle<Object> target) {
+  PIFaceDigital::Init(target);
+}
+
+NODE_MODULE(pifacedigital, Init)
