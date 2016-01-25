@@ -1,9 +1,8 @@
 #include "NPIFaceDigital.h"
 
-extern "C" void 
+extern "C" void
 init(Handle<Object> target) {
-    NanScope();
-    PIFaceDigital::Init(target);
+  PIFaceDigital::Init(target);
 };
 
 NODE_MODULE(pifacedigital, init)

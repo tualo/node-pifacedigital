@@ -22,11 +22,11 @@
 	},
 	"main": "lib/main.js",
 	"engines": {
-		"node": ">= 0.10.17"
+		"node": ">= 4.0.0"
 	},
 	"dependencies": {
-		"nan": "^1.7.0",
-		"node-gyp": "0.10.10",
+		"nan": "^2.2.0",
+		"node-gyp": "^3.2.1",
     "tualo-commander": "*",
     "colors": "*"
 	},
