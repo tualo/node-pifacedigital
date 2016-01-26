@@ -92,7 +92,6 @@ class PIFaceDigital : public node::ObjectWrap {
     static void Close(const v8::FunctionCallbackInfo<v8::Value>& info);
     static void GetInput(const v8::FunctionCallbackInfo<v8::Value>& info);
     static void GetOutput(const v8::FunctionCallbackInfo<v8::Value>& info);
-    static void Watch(const v8::FunctionCallbackInfo<v8::Value>& info);
     int hw_addr;
 };
 

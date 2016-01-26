@@ -260,9 +260,8 @@ void PIFaceDigital::Watch(const v8::FunctionCallbackInfo<v8::Value>& info) {
   ASyncInfo *inf = new ASyncInfo;
   inf->hw_addr = obj->hw_addr;
   inf->timeout = -1;
-  inf->isolate = isolate;
   Local<Function> cb = Local<Function>::Cast(info[0]);
-  inf->callback = cb;
+  inf->callback = Local<Function>::New(cb);
   inf->request.data = inf;
   //uint8_t outputs = pifacedigital_read_reg(OUTPUT, obj->hw_addr);
   uv_queue_work(uv_default_loop(),&inf->request,WaitForAsync,AsyncAfter);
