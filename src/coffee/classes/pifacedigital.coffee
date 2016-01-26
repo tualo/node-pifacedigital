@@ -76,7 +76,7 @@ class PIFaceDigital extends EventEmitter
   getInput: () ->
     @pi.getInput()
 
-  watch: (pin, callback) ->
+  _watch: (pin, callback) ->
     @pi.watch () ->
       console.log arguments
     #if typeof @callbacks[pin]=='function'
@@ -87,8 +87,9 @@ class PIFaceDigital extends EventEmitter
     if typeof @timer[pin]!='undefined'
       clearTimeout @timer[pin]
 
-  _watch: (pin) ->
-
+  watch: (pin,callback) ->
+    if typeof callback=='function'
+      @callbacks[pin] = callback
     val = @get pin
     if @states[pin]!=val
       if @states[pin]<val
@@ -98,5 +99,5 @@ class PIFaceDigital extends EventEmitter
     @states[pin]=val
     me = @
     fn = () ->
-      me._watch.bind(me)(pin)
+      me.watch.bind(me)(pin)
     @timer[pin] = setTimeout fn, 10

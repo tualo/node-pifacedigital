@@ -1,39 +1,39 @@
 {
-	"name": "node-pifacedigital",
-	"description": "Raspberry Pifacedigital Addon",
-	"bin": {
+  "name": "node-pifacedigital",
+  "description": "Raspberry Pifacedigital Addon",
+  "bin": {
     "pifacedigital": "./bin/pifacedigital"
   },
-	"license": "GPL-3.0",
+  "license": "GPL-3.0",
   "version": "0.1.5",
-	"keywords": [
-		"piface",
+  "keywords": [
+    "piface",
     "pifacedigital",
-		"raspberry pi"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/tualo/node-pifacedigital.git"
-	},
-	"author": {
-		"name": "Thomas Hoffmann",
-		"email": "thomas.hoffmann@tualo.de",
+    "raspberry pi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tualo/node-pifacedigital.git"
+  },
+  "author": {
+    "name": "Thomas Hoffmann",
+    "email": "thomas.hoffmann@tualo.de",
     "url": "http://tualo.de/"
-	},
-	"main": "lib/main.js",
-	"engines": {
-		"node": ">= 4.0.0"
-	},
-	"dependencies": {
-		"nan": "^2.2.0",
-		"node-gyp": "^3.2.1",
-    "tualo-commander": "*",
-    "colors": "*"
-	},
+  },
+  "main": "lib/main.js",
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "dependencies": {
+    "colors": "*",
+    "nan": "^2.2.0",
+    "node-gyp": "^3.2.1",
+    "tualo-commander": "*"
+  },
   "readmeFilename": "README.md",
-	"scripts": {
-		"install": "node-gyp rebuild"
-	},
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-coffee": "*",
