@@ -35,10 +35,20 @@ static void WaitForAsync(uv_work_t *req)
 {
 	ASyncInfo *info = static_cast<ASyncInfo *>(req->data);
 	pifacedigital_enable_interrupts();
-	printf("Interrupt detected. Inputs: 0x%x\n", info->hw_addr);	
-	while ( 0==(info->success = pifacedigital_wait_for_input(&info->inputs, info->timeout, info->hw_addr))){
+  uint8_t inputs;
+  int success;
+	//printf("Interrupt detected. Inputs: 0x%x\n", info->hw_addr);	
+	while ( 0==(success = pifacedigital_wait_for_input(&inputs, info->timeout, info->hw_addr))){
 		if (info->success==0){
-			printf("Interrupt detected. Inputs: 0x%x\n", info->inputs);	
+			printf("Interrupt detected. Inputs: 0x%x\n", inputs);
+			
+//	const unsigned argc = 2;
+//	Local<v8::Integer> argv[argc] = {};
+	
+	// execute the callback
+//	info->callback->Call(Null(info->isolate),argc,argv);
+
+	
 		}else {
 			printf("pifacedigital_wait_for_input error or timeout\n");
 		}
