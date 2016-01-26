@@ -4,7 +4,7 @@
 using namespace v8;
 
 void Initialize(Local<Object> exports) {
-  PIFaceDigital::Init(exports);
+  PIFaceDigital::Init(target);
 }
 
 NODE_MODULE(pifacedigital, Initialize)

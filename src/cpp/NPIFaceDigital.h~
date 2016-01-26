@@ -13,7 +13,7 @@
 using namespace v8;
 using namespace node;
 
-class PIFaceDigital : public node::ObjectWrap {
+class PIFaceDigital : public Nan::ObjectWrap {
   public:
 	  static v8::Persistent<v8::Function> constructor;
   

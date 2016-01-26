@@ -252,7 +252,6 @@ NAN_METHOD(PIFaceDigital::GetOutput){
 }
 */
 
-/*
 NAN_METHOD(PIFaceDigital::Watch){
 	SETUP_FUNCTION(PIFaceDigital)
 	//int points = args[0]->Uint32Value();
