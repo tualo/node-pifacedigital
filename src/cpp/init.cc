@@ -3,8 +3,8 @@
 
 using namespace v8;
 
-void Init(Handle<Object> target) {
+void Initialize(Local<Object> exports) {
   PIFaceDigital::Init(target);
 }
 
-NODE_MODULE(pifacedigital, Init)
+NODE_MODULE(pifacedigital, Initialize)
