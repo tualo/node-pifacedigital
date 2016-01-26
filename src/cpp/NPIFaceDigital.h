@@ -39,7 +39,7 @@ static void WaitForAsync(uv_work_t *req)
   int success;
 	//printf("Interrupt detected. Inputs: 0x%x\n", info->hw_addr);	
 	while ( 0==(success = pifacedigital_wait_for_input(&inputs, info->timeout, info->hw_addr))){
-		if (info->success==0){
+		if (success==0){
 			printf("Interrupt detected. Inputs: 0x%x\n", inputs);
 			
 //	const unsigned argc = 2;
