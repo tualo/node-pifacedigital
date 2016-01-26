@@ -19,6 +19,7 @@ void PIFaceDigital::Init(v8::Local<v8::Object> exports) {
   NODE_SET_PROTOTYPE_METHOD(tpl, "close", Close);
   NODE_SET_PROTOTYPE_METHOD(tpl, "getInput", GetInput);
   NODE_SET_PROTOTYPE_METHOD(tpl, "getOutput", GetOutput);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "watch", Watch);
 
   constructor.Reset(isolate, tpl->GetFunction());
   exports->Set(String::NewFromUtf8(isolate, "PIFaceDigital"),tpl->GetFunction());
