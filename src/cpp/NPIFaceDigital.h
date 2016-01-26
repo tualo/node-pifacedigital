@@ -36,11 +36,12 @@ static void WaitForAsync(uv_work_t *req)
 	ASyncInfo *info = static_cast<ASyncInfo *>(req->data);
 	pifacedigital_enable_interrupts();
 	printf("Interrupt detected. Inputs: 0x%x\n", info->hw_addr);	
-	info->success = pifacedigital_wait_for_input(&info->inputs, info->timeout, info->hw_addr);
-	if (info->success==0){
-		printf("Interrupt detected. Inputs: 0x%x\n", info->inputs);	
-	}else {
-		printf("pifacedigital_wait_for_input error or timeout\n");
+	while ( 0==(info->success = pifacedigital_wait_for_input(&info->inputs, info->timeout, info->hw_addr))){
+		if (info->success==0){
+			printf("Interrupt detected. Inputs: 0x%x\n", info->inputs);	
+		}else {
+			printf("pifacedigital_wait_for_input error or timeout\n");
+		}
 	}
 	pifacedigital_disable_interrupts();
 }
