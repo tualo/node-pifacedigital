@@ -45,7 +45,7 @@ class PIFaceDigital extends EventEmitter
 
     @pi = new pifacedigital.PIFaceDigital
     pi = @pi
-    pi.open()
+    pi.open(addr)
     @closeOnExit= closeOnExit
     process.on 'exit', @_clean.bind(@)
 
