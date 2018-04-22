@@ -75,6 +75,10 @@ class PIFaceDigital extends EventEmitter
 
   getInput: () ->
     @pi.getInput()
+    
+  getOutput: () ->
+    @pi.getOutput()
+
 
   _watch: (pin, callback) ->
     @pi.watch () ->
