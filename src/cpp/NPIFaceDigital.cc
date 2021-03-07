@@ -66,7 +66,7 @@ void PIFaceDigital::New(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	  if (info.Length() == 0){
 	    pifacedigital = new PIFaceDigital;
 	  } else if (info.Length() == 1){
-	    pifacedigital = new PIFaceDigital( info[0]->IntegerValue() );
+	    pifacedigital = new PIFaceDigital( (int)info[0]->ToInt32(Nan::GetCurrentContext()).ToLocalChecked()->Value(); );
 	  }
 	  pifacedigital->Wrap(info.This());
     info.GetReturnValue().Set(info.This());
@@ -116,7 +116,7 @@ void PIFaceDigital::Open(const v8::FunctionCallbackInfo<v8::Value>& info) {
   HandleScope scope(isolate);
   PIFaceDigital* obj = node::ObjectWrap::Unwrap<PIFaceDigital>(info.This());
 	if(info.Length() == 1) {
-  	obj->hw_addr = info[0]->IntegerValue();
+  	obj->hw_addr = info[0]->ToInt32(Nan::GetCurrentContext()).ToLocalChecked()->Value();;
 	}
 	pifacedigital_open(obj->hw_addr);
 	info.GetReturnValue().Set(true);
@@ -193,8 +193,9 @@ void PIFaceDigital::Get(const v8::FunctionCallbackInfo<v8::Value>& info) {
 			res = pifacedigital_read_bit(i, OUTPUT, obj->hw_addr);
 		}
   } else {
-  	isolate->ThrowException(Exception::TypeError(
-        String::NewFromUtf8(isolate, "Invalid number of arguments")));
+
+  	isolate->ThrowException( v8::Exception::Error    
+                (v8::String::New("Invalid> arguments.")) );
   }
 	info.GetReturnValue().Set(res);
 }
