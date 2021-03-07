@@ -71,8 +71,7 @@ void PIFaceDigital::New(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	  pifacedigital->Wrap(info.This());
     info.GetReturnValue().Set(info.This());
   } else {
-  	isolate->ThrowException(Exception::TypeError(
-        String::NewFromUtf8(isolate, "Cannot instantiate without new")));
+  	//isolate->ThrowException(Exception::TypeError(        String::NewFromUtf8(isolate, "Cannot instantiate without new")));
   }
 }
 
@@ -194,7 +193,7 @@ void PIFaceDigital::Get(const v8::FunctionCallbackInfo<v8::Value>& info) {
 		}
   } else {
 
-  	isolate->ThrowException( v8::Exception::Error (v8::String("Invalid> arguments.") );
+  	// isolate->ThrowException( v8::Exception::Error (v8::String("Invalid> arguments.") );
   }
 	info.GetReturnValue().Set(res);
 }
