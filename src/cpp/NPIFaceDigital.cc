@@ -263,6 +263,7 @@ void PIFaceDigital::Watch(const v8::FunctionCallbackInfo<v8::Value>& info) {
   inf->timeout = -1;
   inf->isolate = isolate;
   Local<Function> cb = Local<Function>::Cast(info[0]);
+  
   inf->callback = cb;
   inf->request.data = inf;
   //uint8_t outputs = pifacedigital_read_reg(OUTPUT, obj->hw_addr);

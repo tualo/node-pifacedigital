@@ -71,7 +71,11 @@ static void AsyncAfter(uv_work_t *req, int status)
 	
 	// execute the callback
 	const unsigned argc = 0;
-	info->callback->Call(Null(info->isolate),argc,argv);
+//	info->callback->Call(Null(info->isolate),argc,argv);
+  Local<Context> context = isolate->GetCurrentContext();
+  info->callback->Call(context, Null(info->isolate), argc, argv).ToLocalChecked();
+ 
+ 
 	// dispose the callback object from the info
 	//info->callback.Dispose();
 	// delete the baton object
