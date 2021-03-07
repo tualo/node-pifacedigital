@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "colors": "*",
-    "nan": "^2.2.0",
+    "nan": "^2.14.2",
     "node-gyp": "^3.2.1",
     "tualo-commander": "*"
   },
@@ -35,11 +35,11 @@
     "install": "node-gyp rebuild"
   },
   "devDependencies": {
+    "coffee-script": "~1.9.0",
     "grunt": "*",
-    "grunt-contrib-coffee": "*",
     "grunt-cli": "*",
-    "grunt-shell": "*",
     "grunt-coffeelint": "*",
-    "coffee-script": "~1.9.0"
+    "grunt-contrib-coffee": "*",
+    "grunt-shell": "*"
   }
 }

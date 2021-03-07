@@ -1,4 +1,5 @@
 #include "NPIFaceDigital.h"
+#include <nan.h>
 
 //v8::Persistent<v8::FunctionTemplate> PIFaceDigital::constructor;
 Persistent<Function> PIFaceDigital::constructor;
@@ -184,8 +185,8 @@ void PIFaceDigital::Get(const v8::FunctionCallbackInfo<v8::Value>& info) {
     res = pifacedigital_read_bit(i, INPUT, obj->hw_addr);
   }else if(info.Length() == 2) {
 
-    int i = Nan::To<v8::nteger>(info[0]);
-    int t = Nan::To<v8::nteger>(info[1]);
+    int i = Nan::To<v8::Integer>(info[0]);
+    int t = Nan::To<v8::Integer>(info[1]);
   /*
 		int i = info[0]->IntegerValue();
 		int t = info[1]->IntegerValue();
