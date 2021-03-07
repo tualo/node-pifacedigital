@@ -181,7 +181,7 @@ void PIFaceDigital::Get(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	uint8_t res = 0;
 	if(info.Length() == 1) {
   	//int i = (int)info[0]->Int32Value();
-    int i = (int)info[0]->->NumberValue();
+    int i = (int)info[0]->NumberValue();
     res = pifacedigital_read_bit(i, INPUT, obj->hw_addr);
   }else if(info.Length() == 2) {
 
