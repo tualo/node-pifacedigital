@@ -152,8 +152,8 @@ void PIFaceDigital::Set(const v8::FunctionCallbackInfo<v8::Value>& info) {
   HandleScope scope(isolate);
   PIFaceDigital* obj = node::ObjectWrap::Unwrap<PIFaceDigital>(info.This());
 	if(info.Length() == 2) {
-  	int i = info[0]->IntegerValue();
-  	int j = info[1]->IntegerValue();
+  	int i = (int)info[0]->ToInt32(Nan::GetCurrentContext()).ToLocalChecked()->Value();
+  	int j = (int)info[1]->ToInt32(Nan::GetCurrentContext()).ToLocalChecked()->Value();
     pifacedigital_write_bit(i, j, OUTPUT, obj->hw_addr);
   }
 	info.GetReturnValue().Set(true);
@@ -185,8 +185,8 @@ void PIFaceDigital::Get(const v8::FunctionCallbackInfo<v8::Value>& info) {
     res = pifacedigital_read_bit(i, INPUT, obj->hw_addr);
   }else if(info.Length() == 2) {
 
-		int i = (int)info[0]->Int32Value();
-		int t = (int)info[1]->Int32Value();
+		int i = (int)info[0]->ToInt32(Nan::GetCurrentContext()).ToLocalChecked()->Value();
+		int t = (int)info[1]->ToInt32(Nan::GetCurrentContext()).ToLocalChecked()->Value();
 		if (t==0){
 			res = pifacedigital_read_bit(i, INPUT, obj->hw_addr);
 		}else if (t==1){
