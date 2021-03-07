@@ -181,7 +181,7 @@ void PIFaceDigital::Get(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	uint8_t res = 0;
 	if(info.Length() == 1) {
 //  	int i = info[0]->IntegerValue();
-    int i = Nan::To<v8::nteger>(info[0]);
+    int i = Nan::To<v8::Integer>(info[0]).ToLocalChecked().IntegerValue();
     res = pifacedigital_read_bit(i, INPUT, obj->hw_addr);
   }else if(info.Length() == 2) {
 
