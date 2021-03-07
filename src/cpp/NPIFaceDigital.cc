@@ -66,7 +66,7 @@ void PIFaceDigital::New(const v8::FunctionCallbackInfo<v8::Value>& info) {
 	  if (info.Length() == 0){
 	    pifacedigital = new PIFaceDigital;
 	  } else if (info.Length() == 1){
-	    pifacedigital = new PIFaceDigital( (int)info[0]->ToInt32(Nan::GetCurrentContext()).ToLocalChecked()->Value(); );
+	    pifacedigital = new PIFaceDigital( (int)info[0]->ToInt32(Nan::GetCurrentContext()).ToLocalChecked()->Value() );
 	  }
 	  pifacedigital->Wrap(info.This());
     info.GetReturnValue().Set(info.This());
