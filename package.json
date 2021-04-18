@@ -26,20 +26,18 @@
   },
   "dependencies": {
     "colors": "*",
-    "nan": "^2.14.2",
-    "node-gyp": "^3.2.1",
-    "tualo-commander": "*"
+    "nan": "*",
+    "node-addon-api": "*",
+    "node-gyp": "*",
+    "tualo-commander": "^1.0.0"
   },
   "readmeFilename": "README.md",
   "scripts": {
     "install": "node-gyp rebuild"
   },
   "devDependencies": {
-    "coffee-script": "~1.9.0",
-    "grunt": "*",
-    "grunt-cli": "*",
-    "grunt-coffeelint": "*",
-    "grunt-contrib-coffee": "*",
-    "grunt-shell": "*"
+    "grunt": "^1.3.0",
+    "grunt-coffeelint": "^0.0.16",
+    "grunt-contrib-coffee": "^2.1.0"
   }
 }

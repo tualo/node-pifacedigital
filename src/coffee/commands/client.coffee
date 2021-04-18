@@ -26,13 +26,14 @@ class ClientCMD extends Command
     @client = new Client
     fn = () ->
       null
-    if options.type == 'set' and options.pin and options.value
-      @client.set options.pin, options.value
+    if options._optionValues.type == 'set' and options._optionValues.pin and options._optionValues.value
+      @client.set options._optionValues.pin, options._optionValues.value
       setTimeout fn, 1000
-    else if options.type == 'get' and options.pin
-      @client.get options.pin
+    else if options._optionValues.type == 'get' and options._optionValues.pin
+      @client.get options._optionValues.pin
       setTimeout fn, 1000
-    else if options.type == 'watch' and options.pin
-      @client.watch options.pin
+    else if options._optionValues.type == 'watch' and options._optionValues.pin
+      @client.watch options._optionValues.pin
     else
+      console.log options
       error 'client', 'params are not valid'

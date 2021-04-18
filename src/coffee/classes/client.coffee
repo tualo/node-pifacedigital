@@ -4,6 +4,7 @@ PIFaceDigital = require './pifacedigital'
 module.exports =
 class Client extends EventEmitter
   constructor: () ->
+    super()
     @pi = new PIFaceDigital 0
 
   watch: (pin) ->

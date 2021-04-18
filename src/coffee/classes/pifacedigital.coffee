@@ -8,6 +8,7 @@ catch e
 module.exports =
 class PIFaceDigital extends EventEmitter
   constructor: (addr,closeOnExit) ->
+    super(addr,closeOnExit)
     fn = () ->
       null
     @callbacks = [
@@ -43,9 +44,11 @@ class PIFaceDigital extends EventEmitter
       null
     ]
 
-    @pi = new pifacedigital.PIFaceDigital
+    @pi = pifacedigital
+    console.log @pi
+    @addr = addr
     pi = @pi
-    pi.open(addr)
+    pi.open(@addr)
     @closeOnExit= closeOnExit
     process.on 'exit', @_clean.bind(@)
 
@@ -54,34 +57,34 @@ class PIFaceDigital extends EventEmitter
     #process.on 'SIGHUP', @_clean.bind(@)
 
     for p in [0..7]
-      @states[p]=@get p
+      @states[p]=@get p*1
 
   _clean: () ->
     if @closeOnExit==true
-      @pi.set 0,0
-      @pi.set 0,1
-      @pi.set 0,2
-      @pi.set 0,3
-      @pi.set 0,4
-      @pi.set 0,5
-      @pi.set 0,6
-      @pi.set 0,7
+      @pi.set @addr,0,0
+      @pi.set @addr,0,1
+      @pi.set @addr,0,2
+      @pi.set @addr,0,3
+      @pi.set @addr,0,4
+      @pi.set @addr,0,5
+      @pi.set @addr,0,6
+      @pi.set @addr,0,7
 
   set: (pin,value) ->
-    @pi.set value,pin
+    @pi.set @addr ,value*1,pin*1
 
   get: (pin) ->
-    @pi.get pin
+    @pi.get @addr  ,pin*1
 
   getInput: () ->
-    @pi.getInput()
+    @pi.getInput(@addr)
     
   getOutput: () ->
-    @pi.getOutput()
+    @pi.getOutput(@addr)
 
 
   _watch: (pin, callback) ->
-    @pi.watch () ->
+    @pi.watch (@addr) ->
       console.log arguments
     #if typeof @callbacks[pin]=='function'
     #  @callbacks[pin] = callback
@@ -94,7 +97,7 @@ class PIFaceDigital extends EventEmitter
   watch: (pin,callback) ->
     if typeof callback=='function'
       @callbacks[pin] = callback
-    val = @get pin
+    val = @get @addr,pin
     if @states[pin]!=val
       if @states[pin]<val
         @callbacks[pin] pin,'lohi'
@@ -103,5 +106,5 @@ class PIFaceDigital extends EventEmitter
     @states[pin]=val
     me = @
     fn = () ->
-      me.watch.bind(me)(pin)
+      me.watch.bind(me)(pin*1)
     @timer[pin] = setTimeout fn, 10
