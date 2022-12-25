@@ -1,5 +1,7 @@
 # PI Face Digital
 
+### DEPRECATED !!! Please follow forks for updates!
+
 This package contains a nodejs library and command line tool for the pifacedigital board.
 As long as the user is in the group spi this module does not need any root privileges.
 
